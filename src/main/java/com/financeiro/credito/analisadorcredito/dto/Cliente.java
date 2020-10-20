@@ -2,8 +2,6 @@ package com.financeiro.credito.analisadorcredito.dto;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.math.BigDecimal;
 import java.util.function.Predicate;
@@ -46,7 +44,7 @@ public class Cliente {
         return salario;
     }
 
-    public boolean isSalarioValidoPara(Predicate<BigDecimal> condicoes) {
+    public boolean isSalario(Predicate<BigDecimal> condicoes) {
         return condicoes.test(salario);
     }
 
