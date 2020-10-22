@@ -4,12 +4,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.financeiro.credito.analisadorcredito.model.TipoEmprestimo;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
-public class EmprestimoDto {
-    private TipoEmprestimo tipoCredito;
+public class Emprestimo {
+    private final TipoEmprestimo tipoCredito;
 
-    public EmprestimoDto(TipoEmprestimo tipoCredito) {
-        this.tipoCredito = tipoCredito;
+    public Emprestimo(TipoEmprestimo tipoCredito) {
+        this.tipoCredito = Objects.requireNonNull(tipoCredito);
     }
 
     @JsonProperty

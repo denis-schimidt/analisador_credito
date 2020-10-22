@@ -8,20 +8,20 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
-public class EmprestimosDisponiveisParaClienteResponse {
+public class EmprestimosDisponiveisParaCliente {
     private final String cliente;
-    private final List<EmprestimoDto> emprestimos;
+    private final List<Emprestimo> emprestimos;
 
-    public EmprestimosDisponiveisParaClienteResponse(String cliente, List<TipoEmprestimo> tiposCreditos) {
+    public EmprestimosDisponiveisParaCliente(String cliente, List<TipoEmprestimo> tiposCreditos) {
         this.cliente = cliente;
-        this.emprestimos = tiposCreditos.stream().map(EmprestimoDto::new).collect(toList());
+        this.emprestimos = tiposCreditos.stream().map(Emprestimo::new).collect(toList());
     }
 
     public String getCliente() {
         return cliente;
     }
 
-    public List<EmprestimoDto> getEmprestimos() {
+    public List<Emprestimo> getEmprestimos() {
         return emprestimos;
     }
 

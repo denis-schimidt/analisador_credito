@@ -1,7 +1,7 @@
 package com.financeiro.credito.analisadorcredito.controller;
 
 import com.financeiro.credito.analisadorcredito.dto.Cliente;
-import com.financeiro.credito.analisadorcredito.dto.EmprestimosDisponiveisParaClienteResponse;
+import com.financeiro.credito.analisadorcredito.dto.EmprestimosDisponiveisParaCliente;
 import com.financeiro.credito.analisadorcredito.service.AnalisadorEmprestimo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,13 +21,13 @@ public class AnalisadorEmprestimoController {
 
     @PostMapping(value = "/emprestimos")
     @ResponseStatus(OK)
-    public EmprestimosDisponiveisParaClienteResponse listarEmprestimosDisponiveisPara(@Valid @RequestBody Cliente cliente) {
+    public EmprestimosDisponiveisParaCliente listarEmprestimosDisponiveisPara(@Valid @RequestBody Cliente cliente) {
 
         return analisadoresEmprestimo
            .stream()
            .filter(analisadorEmprestimo -> analisadorEmprestimo.selecionadoPara(cliente))
            .findFirst()
-           .map(analisadorEmprestimo -> new EmprestimosDisponiveisParaClienteResponse(cliente.getNome(), analisadorEmprestimo.listarTiposEmprestimosPara(cliente)))
+           .map(analisadorEmprestimo -> new EmprestimosDisponiveisParaCliente(cliente.getNome(), analisadorEmprestimo.listarTiposEmprestimosPara(cliente)))
            .orElseThrow(NenhumCreditoSelecionadoException::new);
     }
 }
