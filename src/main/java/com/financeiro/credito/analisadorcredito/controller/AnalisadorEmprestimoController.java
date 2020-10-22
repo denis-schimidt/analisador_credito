@@ -25,7 +25,7 @@ public class AnalisadorEmprestimoController {
 
         return analisadoresEmprestimo
            .stream()
-           .filter(analisadorEmprestimo -> analisadorEmprestimo.selecionadoPara(cliente))
+           .filter(analisadorEmprestimo -> analisadorEmprestimo.isDeveAnalisar(cliente))
            .findFirst()
            .map(analisadorEmprestimo -> new EmprestimosDisponiveisParaCliente(cliente.getNome(), analisadorEmprestimo.listarTiposEmprestimosPara(cliente)))
            .orElseThrow(NenhumCreditoSelecionadoException::new);

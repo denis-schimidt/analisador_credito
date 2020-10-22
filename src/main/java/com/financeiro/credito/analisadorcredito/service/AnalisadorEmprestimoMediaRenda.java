@@ -31,7 +31,7 @@ class AnalisadorEmprestimoMediaRenda implements AnalisadorEmprestimo {
     }
 
     @Override
-    public boolean selecionadoPara(Cliente cliente) {
+    public boolean isDeveAnalisar(Cliente cliente) {
         return cliente.isSalario(MAIOR_QUE_3_000.and(MENOR_OU_IGUAL_A_5_000));
     }
 }

@@ -29,7 +29,7 @@ class AnalisadorEmprestimoBaixaRenda implements AnalisadorEmprestimo {
     }
 
     @Override
-    public boolean selecionadoPara(Cliente cliente) {
+    public boolean isDeveAnalisar(Cliente cliente) {
         return cliente.isSalario(MENOR_OU_IGUAL_A_3_000);
     }
 }
