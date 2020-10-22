@@ -9,6 +9,9 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.function.Predicate;
 
+import static com.financeiro.credito.analisadorcredito.model.TipoEmprestimo.COM_GARANTIA;
+import static com.financeiro.credito.analisadorcredito.model.TipoEmprestimo.PESSOAL;
+
 @Service
 class AnalisadorEmprestimoMediaRenda implements AnalisadorEmprestimo {
     private static final BigDecimal TRES_MIL = new BigDecimal("3000");
@@ -18,10 +21,10 @@ class AnalisadorEmprestimoMediaRenda implements AnalisadorEmprestimo {
 
     @Override
     public List<TipoEmprestimo> listarTiposEmprestimosPara(Cliente cliente) {
-        List<TipoEmprestimo> tiposCredito = Lists.newArrayList(TipoEmprestimo.PESSOAL);
+        List<TipoEmprestimo> tiposCredito = Lists.newArrayList(PESSOAL);
 
         if (cliente.resideEmSP()) {
-            tiposCredito.add(TipoEmprestimo.COM_GARANTIA);
+            tiposCredito.add(COM_GARANTIA);
         }
 
         return tiposCredito;
