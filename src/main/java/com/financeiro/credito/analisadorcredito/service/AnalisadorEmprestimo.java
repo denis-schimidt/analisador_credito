@@ -9,5 +9,5 @@ public interface AnalisadorEmprestimo {
 
     List<TipoEmprestimo> listarTiposEmprestimosPara(Cliente cliente);
 
-    boolean isDeveAnalisar(Cliente cliente);
+    boolean deveAnalisar(Cliente cliente);
 }

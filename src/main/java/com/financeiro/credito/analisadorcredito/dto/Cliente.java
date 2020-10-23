@@ -57,7 +57,7 @@ public class Cliente {
         return salario;
     }
 
-    public boolean isSalario(Predicate<BigDecimal> condicoes) {
+    public boolean salarioEh(Predicate<BigDecimal> condicoes) {
         return condicoes.test(salario);
     }
 

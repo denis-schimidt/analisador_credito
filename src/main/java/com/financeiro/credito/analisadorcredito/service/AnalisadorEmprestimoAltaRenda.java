@@ -29,7 +29,7 @@ class AnalisadorEmprestimoAltaRenda implements AnalisadorEmprestimo {
     }
 
     @Override
-    public boolean isDeveAnalisar(Cliente cliente) {
-        return cliente.isSalario(MAIOR_QUE_5_000);
+    public boolean deveAnalisar(Cliente cliente) {
+        return cliente.salarioEh(MAIOR_QUE_5_000);
     }
 }
