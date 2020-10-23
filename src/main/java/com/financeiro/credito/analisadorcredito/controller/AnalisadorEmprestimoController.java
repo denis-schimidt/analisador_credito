@@ -28,6 +28,6 @@ public class AnalisadorEmprestimoController {
            .filter(analisadorEmprestimo -> analisadorEmprestimo.isDeveAnalisar(cliente))
            .findFirst()
            .map(analisadorEmprestimo -> new EmprestimosDisponiveisParaCliente(cliente.getNome(), analisadorEmprestimo.listarTiposEmprestimosPara(cliente)))
-           .orElseThrow(NenhumCreditoSelecionadoException::new);
+           .orElseThrow(NenhumAnalisadorEmprestimoSelecionadoException::new);
     }
 }
