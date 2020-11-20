@@ -9,20 +9,19 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.function.Predicate;
 
-import static com.financeiro.credito.analisadorcredito.model.TipoEmprestimo.CONSIGNADO;
-import static com.financeiro.credito.analisadorcredito.model.TipoEmprestimo.PESSOAL;
+import static com.financeiro.credito.analisadorcredito.model.TipoEmprestimo.*;
 
 @Service
 class AnalisadorEmprestimoAltaRenda implements AnalisadorEmprestimo {
     private static final BigDecimal CINCO_MIL = new BigDecimal("5000");
-    private static final Predicate<BigDecimal> MAIOR_QUE_5_000 = (salario) -> salario.compareTo(CINCO_MIL) > 0;
+    private static final Predicate<BigDecimal> MAIOR_OU_IGUAL_A_5_000 = (salario) -> salario.compareTo(CINCO_MIL) >= 0;
 
     @Override
     public List<TipoEmprestimo> listarTiposEmprestimosPara(Cliente cliente) {
         List<TipoEmprestimo> tiposCredito = Lists.newArrayList(PESSOAL, CONSIGNADO);
 
         if(cliente.menosDe30Anos()) {
-            tiposCredito.add(TipoEmprestimo.COM_GARANTIA);
+            tiposCredito.add(COM_GARANTIA);
         }
 
         return tiposCredito;
@@ -30,6 +29,6 @@ class AnalisadorEmprestimoAltaRenda implements AnalisadorEmprestimo {
 
     @Override
     public boolean deveAnalisar(Cliente cliente) {
-        return cliente.salarioEh(MAIOR_QUE_5_000);
+        return cliente.salarioEh(MAIOR_OU_IGUAL_A_5_000);
     }
 }

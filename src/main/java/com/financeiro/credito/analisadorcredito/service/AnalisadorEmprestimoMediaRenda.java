@@ -17,7 +17,7 @@ class AnalisadorEmprestimoMediaRenda implements AnalisadorEmprestimo {
     private static final BigDecimal TRES_MIL = new BigDecimal("3000");
     private static final BigDecimal CINCO_MIL = new BigDecimal("5000");
     private static final Predicate<BigDecimal> MAIOR_QUE_3_000 = (salario) -> salario.compareTo(TRES_MIL) > 0;
-    private static final Predicate<BigDecimal> MENOR_OU_IGUAL_A_5_000 = (salario) -> salario.compareTo(CINCO_MIL) <= 0;
+    private static final Predicate<BigDecimal> MENOR_QUE_5_000 = (salario) -> salario.compareTo(CINCO_MIL) < 0;
 
     @Override
     public List<TipoEmprestimo> listarTiposEmprestimosPara(Cliente cliente) {
@@ -32,6 +32,6 @@ class AnalisadorEmprestimoMediaRenda implements AnalisadorEmprestimo {
 
     @Override
     public boolean deveAnalisar(Cliente cliente) {
-        return cliente.salarioEh(MAIOR_QUE_3_000.and(MENOR_OU_IGUAL_A_5_000));
+        return cliente.salarioEh(MAIOR_QUE_3_000.and(MENOR_QUE_5_000));
     }
 }
